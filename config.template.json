@@ -1,0 +1,20 @@
+{
+  "ROBOT": "//Alice",
+  "API": {
+    "endpoint": "wss://mars.rpc.robonomics.network/",
+    "types": {
+      "BlockLength": "u64",
+      "Record": "Vec<u8>",
+      "Parameter": "bool",
+      "LaunchParameter": "Parameter",
+      "Address": "AccountId",
+      "LookupSource": "AccountId",
+      "RingBufferIndex": {
+        "start": "u64",
+        "end": "u64"
+      },
+      "RingBufferItem": "(Compact<Moment>,Record)",
+      "Lighthouse": "H160"
+    }
+  }
+}
