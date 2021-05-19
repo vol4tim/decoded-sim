@@ -1,6 +1,7 @@
 import BN from "bn.js";
 import { stringToHex } from "@polkadot/util";
 import { keyring } from "./api";
+import logger from "./services/logger";
 
 export default class Robot {
   constructor(account, api) {
@@ -53,12 +54,12 @@ export default class Robot {
         }
       }
     } catch (error) {
-      console.log(error);
+      logger.error(error.message);
     }
   }
 
   async listen() {
-    console.log("listen");
+    logger.info("listen");
     this._listener = await this.api.query.system.events((events) => {
       events.forEach((record) => {
         const { event } = record;
@@ -82,7 +83,7 @@ export default class Robot {
     if (this.state) {
       throw new Error("currently busy");
     }
-    console.log("start");
+    logger.info("start");
     this.state = true;
     this.driver = driver;
     this._saveLog(
@@ -110,7 +111,7 @@ export default class Robot {
   }
 
   stop(driver) {
-    console.log("stop", driver);
+    logger.info(`stop ${driver}`);
     if (!this.state) {
       throw new Error("robot is off");
     } else if (this.driver !== driver) {

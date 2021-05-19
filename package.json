@@ -25,6 +25,7 @@
     "prettier": "^2.0.5"
   },
   "dependencies": {
-    "@polkadot/api": "4.6.3-8"
+    "@polkadot/api": "4.6.3-8",
+    "winston": "^3.3.3"
   }
 }
